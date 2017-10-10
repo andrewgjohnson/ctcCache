@@ -14,6 +14,9 @@ This project was started by [Andrew G. Johnson](https://github.com/andrewgjohnso
 
 ## Changelog
 
+######v0.9.3 (April 7, 2015)
+ * Added MySQL server information to the hash for cached MySQL query results
+
 ######v0.9.2 (December 18, 2013)
  * Fixed bug that allowed expiration time to be above the maximum for Memcache
 
