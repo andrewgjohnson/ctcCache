@@ -59,7 +59,6 @@ class ctcCache_Query
 			$hash = $this->_query;
 			foreach ($this->_parameters as $parameter)
 				$hash .= $parameter['parameter'] . $parameter['value'];
-			$hash = md5($hash);
 
 			$cached_results = new ctcCache_Entry($hash,$this->_cache_length);
 			if (!is_null($cached_results->value))
