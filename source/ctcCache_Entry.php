@@ -1,7 +1,7 @@
 <?php
 
 /*
- * ctcCache v0.9.3
+ * ctcCache v0.9.4
  *
  * Copyright (c) 2015 Andrew G. Johnson <andrew@andrewgjohnson.com>
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -30,10 +30,10 @@ class ctcCache_Entry
 		if (!is_null($cache_length))
 			$this->_cache_length = (int)$cache_length;
 
-		if (class_exists('Memcache'))
+		if (class_exists('Memcache') || class_exists('Memcached'))
 		{
 			$value = ctcCache_MemcacheSingleton::get()->get(md5($this->key));
-			if ($value !== false)
+			if ($value !== false && $value !== 0)
 				$this->value = $value;
 		}
 		else
@@ -52,6 +52,8 @@ class ctcCache_Entry
 		{
 			if (class_exists('Memcache'))
 				ctcCache_MemcacheSingleton::get()->set(md5($this->key),$this->value,false,min($this->_cache_length,2592000)); // 2592000 seconds is the maximum expiration time in memcache
+			else if (class_exists('Memcached'))
+				ctcCache_MemcacheSingleton::get()->set(md5($this->key),$this->value,min($this->_cache_length,2592000)); // 2592000 seconds is the maximum expiration time in memcache
 			else
 			{
 				$cache_path = dirname(__FILE__) . '/cache/' . md5($this->key) . '.log';

@@ -14,6 +14,9 @@ This project was started by [Andrew G. Johnson](https://github.com/andrewgjohnso
 
 ## Changelog
 
+######v0.9.4 (September 29, 2015)
+ * Added support for PHP's Memcached library (previously only supported Memecache library)
+
 ######v0.9.3 (April 7, 2015)
  * Added MySQL server information to the hash for cached MySQL query results
 

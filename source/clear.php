@@ -1,7 +1,7 @@
 <?php
 
 /*
- * ctcCache v0.9.3
+ * ctcCache v0.9.4
  *
  * Copyright (c) 2015 Andrew G. Johnson <andrew@andrewgjohnson.com>
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -21,7 +21,7 @@ date_default_timezone_set('America/Winnipeg');
 
 require_once(dirname(__FILE__) . '/ctcCache.php');
 
-if (class_exists('Memcache'))
+if (class_exists('Memcache') || class_exists('Memcached'))
 	ctcCache_MemcacheSingleton::get()->flush();
 else
 {
