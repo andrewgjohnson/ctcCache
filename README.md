@@ -14,6 +14,9 @@ This project was started by [Andrew G. Johnson](https://github.com/andrewgjohnso
 
 ## Changelog
 
+######v0.9.5 (March 3, 2016)
+ * Added ctcCache_Query->clearCache() function
+
 ######v0.9.4 (September 29, 2015)
  * Added support for PHP's Memcached library (previously only supported Memecache library)
 
