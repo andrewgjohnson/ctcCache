@@ -12,7 +12,7 @@
  * @copyright Copyright (c) 2013 Andrew G. Johnson <andrew@andrewgjohnson.com>
  * @link http://github.com/ctcCache/ctcCache
  * @license http://www.opensource.org/licenses/mit-license.php The MIT License
- * @version 0.9.1
+ * @version 0.9.2
  * @package ctcCache
  *
  */
