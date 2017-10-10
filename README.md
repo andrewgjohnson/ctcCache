@@ -2,7 +2,7 @@
 
 ## Description
 
-ctcCache is a PHP library to help cache results via file IO or Memcache.
+ctcCache is a PHP library to help cache results via file I/O or Memcache.  Redis support may be added but is currently unavailable.
 
 ## Warning
 
