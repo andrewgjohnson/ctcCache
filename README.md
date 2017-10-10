@@ -14,5 +14,9 @@ This project was started by [Andrew G. Johnson](https://github.com/andrewgjohnso
 
 ## Changelog
 
+######v0.9.1 (November 16, 2013)
+ * Added multiple MySQL support
+ * Added setting to determine whether or not empty MySQL queries should be cached
+
 ######v0.9.0 (November 16, 2013)
  * Intial public release of ctcCache

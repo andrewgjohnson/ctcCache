@@ -1,7 +1,7 @@
 <?php
 
 /*
- * ctcCache v0.9.0
+ * ctcCache v0.9.1
  *
  * Copyright (c) 2013 Andrew G. Johnson <andrew@andrewgjohnson.com>
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -12,7 +12,7 @@
  * @copyright Copyright (c) 2013 Andrew G. Johnson <andrew@andrewgjohnson.com>
  * @link http://github.com/ctcCache/ctcCache
  * @license http://www.opensource.org/licenses/mit-license.php The MIT License
- * @version 0.9.0
+ * @version 0.9.1
  * @package ctcCache
  *
  */
@@ -22,15 +22,16 @@ class ctcCache_Query
 	private $_query = null;
 	private $_parameters = array();
 	private $_cache_length = 0;
+	private $_cache_empty_results = CTCCACHE_CACHE_EMPTY_RESULTS_BY_DEFAULT;
 	public $results = null;
 	public $inserted_id = null;
 
-	public function setQuery($query)
+	public function setQuery($query = '')
 	{
 		$this->_query = $query;
 	}
 
-	public function addParameter($parameter,$value)
+	public function addParameter($parameter = '',$value = '')
 	{
 		$this->_parameters[] = array(
 			'parameter' => $parameter,
@@ -38,9 +39,14 @@ class ctcCache_Query
 		);
 	}
 
-	public function setCacheLength($length)
+	public function setCacheLength($cache_length = 0)
 	{
-		$this->_cache_length = (int)$length;
+		$this->_cache_length = max(0,(int)$cache_length);
+	}
+
+	public function setCacheEmptyResults($cache_empty_results = CTCCACHE_CACHE_EMPTY_RESULTS_BY_DEFAULT)
+	{
+		$this->_cache_empty_results = $cache_empty_results === true;
 	}
 
 	public function run()
@@ -71,7 +77,7 @@ class ctcCache_Query
 		$this->results = $query->fetchAll(PDO::FETCH_ASSOC);
 		$this->inserted_id = ctcCache_MySqlSingleton::get()->lastInsertId();
 
-		if ($this->_cache_length > 0 && sizeof($this->results) > 0)
+		if ($this->_cache_length > 0 && (sizeof($this->results) > 0 || $this->_cache_empty_results === true))
 			$cached_results->setValue($this->results);
 
 		return true;
