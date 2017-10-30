@@ -1,0 +1,28 @@
+{
+    "name": "andrewgjohnson/ctc-cache",
+    "type": "library",
+    "description": "ctcCache is a PHP library to help cache results via file I/O or Memcache.",
+    "keywords": [
+        "serializer",
+        "xml"
+    ],
+    "homepage": "https://github.com/andrewgjohnson/ctcCache",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew G Johnson",
+            "email": "andrew@andrewgjohnson.com",
+            "homepage": "http://www.andrewgjohnson.com/",
+            "role": "Project Lead"
+        }
+    ],
+    "require": {
+        "php": ">=5.0.0",
+        "ext-gd": "*"
+    },
+    "autoload": {
+        "files": [
+            "source/ctcCache.php"
+        ]
+    }
+}
