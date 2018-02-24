@@ -70,6 +70,7 @@ if (!class_exists('ctcCache_MySqlSingleton'))
 							self::$_singleton->query('SET NAMES utf8');
 							self::$_singleton->query('SET CHARACTER SET utf8');
 							self::$_singleton->query('SET TIME_ZONE="Canada/Central"');
+							self::$_singleton->query('SET TIME_ZONE="' . date_default_timezone_get() . '"');
 						}
 						catch (Exception $e)
 						{
